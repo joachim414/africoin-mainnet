@@ -22,3 +22,10 @@ Install dependencies:
 
 ```bash
 npm install
+PRIVATE_KEY=your_polygon_wallet_private_key
+POLYGON_API=https://polygon-mainnet.infura.io/v3/your_project_id
+npx hardhat run scripts/deploy-mainnet.js --network polygon
+cd africoin-mainnet     # go to your local repo folder
+git add README.md
+git commit -m "Add Africoin project README"
+git push
