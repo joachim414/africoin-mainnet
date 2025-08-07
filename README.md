@@ -121,3 +121,22 @@ const CurrencyConverter = () => {
 };
 
 export default CurrencyConverter;
+import { Linking, Button } from 'react-native';
+
+const openTransakWidget = (walletAddress: string, selectedCurrency: string) => {
+  const transakURL = `https://global.transak.com?apiKey=YOUR_TRANSAK_API_KEY&walletAddress=${walletAddress}&fiatCurrency=${selectedCurrency}&cryptoCurrency=AFC&network=polygon&disableWalletAddressForm=true`;
+
+  Linking.openURL(transakURL);
+};
+
+// Example Buy button in your UI:
+<Button
+  title="Buy with Transak"
+  onPress={() => {
+    if (!walletAddress) {
+      alert('Please connect your wallet first');
+      return;
+    }
+    openTransakWidget(walletAddress, currency);
+  }}
+/>
