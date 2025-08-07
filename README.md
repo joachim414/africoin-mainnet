@@ -140,3 +140,26 @@ const openTransakWidget = (walletAddress: string, selectedCurrency: string) => {
     openTransakWidget(walletAddress, currency);
   }}
 />
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract Africoin is ERC20 {
+    constructor() ERC20("Africoin", "AFC") {
+        _mint(msg.sender, 100000000 * 10 ** decimals());
+    }
+}
+async function main() {
+  const Africoin = await ethers.getContractFactory("Africoin");
+  const token = await Africoin.deploy();
+  await token.deployed();
+
+  console.log("Africoin deployed to:", token.address);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+Africoin deployed to: 0xABC123456789abcdef...
